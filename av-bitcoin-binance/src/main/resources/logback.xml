@@ -1,0 +1,37 @@
+<configuration>
+    <property name="BASE_DIR" value="./logs" />
+    <property name="FILE_NAME" value="ab-bitcoin-binance.log" />
+    <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %level %logger{36} - %msg%n" />
+
+    <!-- Stop output INFO at start -->
+    <statusListener class="ch.qos.logback.core.status.NopStatusListener" />
+
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="dailyFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${BASE_DIR}/${FILE_NAME}</file>
+        <append>true</append>
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${BASE_DIR}/${FILE_NAME}.%d{yyyy-MM-dd}.gz</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <appender name="dailyFileAsync" class="ch.qos.logback.classic.AsyncAppender">
+        <queueSize>1000000</queueSize>
+        <discardingThreshold>0</discardingThreshold>
+        <appender-ref ref="dailyFile" />
+    </appender>
+
+    <root level="WARN">
+        <appender-ref ref="stdout" />
+        <appender-ref ref="dailyFileAsync" />
+    </root>
+</configuration>

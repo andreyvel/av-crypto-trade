@@ -1,0 +1,81 @@
+{
+  "id": "cac7cea5-2822-4bf3-8886-d02a97505e6e",
+  "status": 200,
+  "result": [
+    {
+      "symbol": "BTCUSDT",
+      "orderId": 5083384,
+      "orderListId": -1,
+      "clientOrderId": "Jz1rY6l1BAXAVDvI2z0Hk3",
+      "price": "26962.84000000",
+      "origQty": "0.01000000",
+      "executedQty": "0.00000000",
+      "cummulativeQuoteQty": "0.00000000",
+      "status": "NEW",
+      "timeInForce": "GTC",
+      "type": "LIMIT",
+      "side": "SELL",
+      "stopPrice": "0.00000000",
+      "icebergQty": "0.00000000",
+      "time": 1684089613642,
+      "updateTime": 1684089613642,
+      "isWorking": true,
+      "workingTime": 1684089613642,
+      "origQuoteOrderQty": "0.00000000",
+      "selfTradePreventionMode": "NONE"
+    },
+    {
+      "symbol": "BTCUSDT",
+      "orderId": 5113569,
+      "orderListId": -1,
+      "clientOrderId": "FJPXdvewq4rNSTTpJs8oN6",
+      "price": "26860.68000000",
+      "origQty": "0.01000000",
+      "executedQty": "0.00000000",
+      "cummulativeQuoteQty": "0.00000000",
+      "status": "NEW",
+      "timeInForce": "GTC",
+      "type": "LIMIT",
+      "side": "BUY",
+      "stopPrice": "0.00000000",
+      "icebergQty": "0.00000000",
+      "time": 1684096116793,
+      "updateTime": 1684096116793,
+      "isWorking": true,
+      "workingTime": 1684096116793,
+      "origQuoteOrderQty": "0.00000000",
+      "selfTradePreventionMode": "NONE"
+    },
+    {
+      "symbol": "BTCUSDT",
+      "orderId": 5113583,
+      "orderListId": -1,
+      "clientOrderId": "9wAQW8iJKr3OEXgveDOO1u",
+      "price": "26914.46000000",
+      "origQty": "0.01000000",
+      "executedQty": "0.00000000",
+      "cummulativeQuoteQty": "0.00000000",
+      "status": "NEW",
+      "timeInForce": "GTC",
+      "type": "LIMIT",
+      "side": "SELL",
+      "stopPrice": "0.00000000",
+      "icebergQty": "0.00000000",
+      "time": 1684096119784,
+      "updateTime": 1684096119784,
+      "isWorking": true,
+      "workingTime": 1684096119784,
+      "origQuoteOrderQty": "0.00000000",
+      "selfTradePreventionMode": "NONE"
+    }
+  ],
+  "rateLimits": [
+    {
+      "rateLimitType": "REQUEST_WEIGHT",
+      "interval": "MINUTE",
+      "intervalNum": 1,
+      "limit": 1200,
+      "count": 40
+    }
+  ]
+}

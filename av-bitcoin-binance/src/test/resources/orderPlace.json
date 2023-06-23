@@ -1,0 +1,53 @@
+{
+  "result": {
+    "symbol": "BTCUSDT",
+    "cummulativeQuoteQty": "268.71480000",
+    "side": "SELL",
+    "orderListId": -1,
+    "executedQty": "0.01000000",
+    "orderId": 4721739,
+    "origQty": "0.01000000",
+    "clientOrderId": "mc7hr8iMLCagccoI2wQpRu",
+    "workingTime": 1684010843612,
+    "type": "MARKET",
+    "price": "0.00000000",
+    "transactTime": 1684010843612,
+    "selfTradePreventionMode": "NONE",
+    "timeInForce": "GTC",
+    "fills": [
+      {
+        "price": "26871.48000000",
+        "qty": "0.01000000",
+        "commission": "0.00000000",
+        "commissionAsset": "USDT",
+        "tradeId": 1693467
+      }
+    ],
+    "status": "FILLED"
+  },
+  "rateLimits": [
+    {
+      "intervalNum": 10,
+      "limit": 50,
+      "count": 1,
+      "interval": "SECOND",
+      "rateLimitType": "ORDERS"
+    },
+    {
+      "intervalNum": 1,
+      "limit": 160000,
+      "count": 2,
+      "interval": "DAY",
+      "rateLimitType": "ORDERS"
+    },
+    {
+      "intervalNum": 1,
+      "limit": 1200,
+      "count": 1,
+      "interval": "MINUTE",
+      "rateLimitType": "REQUEST_WEIGHT"
+    }
+  ],
+  "id": "276fa5be-1efb-4126-a593-051c50b9f23b",
+  "status": 200
+}

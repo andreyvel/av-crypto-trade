@@ -3,14 +3,14 @@ package av.bitcoin.binance;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.trade.common.TradeCommand;
-import org.trade.common.Utils;
-import org.trade.common.dto.OrderDto;
+import av.bitcoin.common.TradeCommand;
+import av.bitcoin.common.Utils;
+import av.bitcoin.common.dto.OrderDto;
 import org.zeromq.SocketType;
 import org.zeromq.ZContext;
 import org.zeromq.ZMQ;
 
-import static org.trade.common.Enums.*;
+import static av.bitcoin.common.Enums.*;
 
 public class TradeCommandSubscriber {
     private static final Logger log = LoggerFactory.getLogger(TradeCommandSubscriber.class);

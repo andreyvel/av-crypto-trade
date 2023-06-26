@@ -2,8 +2,8 @@ package av.bitcoin.trade.gui;
 
 import av.bitcoin.trade.gui.chart.ChartTheme;
 import av.bitcoin.trade.gui.chart.DummyLayout;
-import org.trade.common.Utils;
-import org.trade.common.dto.OrderDto;
+import av.bitcoin.common.Utils;
+import av.bitcoin.common.dto.OrderDto;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,7 +1,7 @@
 package av.bitcoin.trade.gui.data;
 
-import org.trade.common.QuoteBar;
-import org.trade.common.QuoteTick;
+import av.bitcoin.common.QuoteBar;
+import av.bitcoin.common.QuoteTick;
 
 import java.util.Collection;
 

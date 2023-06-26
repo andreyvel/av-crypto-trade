@@ -2,9 +2,9 @@ package av.bitcoin.binance.http;
 
 import com.sun.net.httpserver.HttpExchange;
 import av.bitcoin.binance.TradeSession;
-import org.trade.common.dto.AccountDto;
-import org.trade.common.dto.ErrorDto;
-import org.trade.common.httpserver.HttpHandlerEx;
+import av.bitcoin.common.dto.AccountDto;
+import av.bitcoin.common.dto.ErrorDto;
+import av.bitcoin.common.httpserver.HttpHandlerEx;
 
 public class AccountHandler extends HttpHandlerEx {
     @Override

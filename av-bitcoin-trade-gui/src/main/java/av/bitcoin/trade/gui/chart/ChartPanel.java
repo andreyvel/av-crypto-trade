@@ -1,7 +1,7 @@
 package av.bitcoin.trade.gui.chart;
 
 import av.bitcoin.trade.gui.LimitOrderButton;
-import org.trade.common.dto.OrderDto;
+import av.bitcoin.common.dto.OrderDto;
 import av.bitcoin.trade.gui.draw.IChartEntity;
 
 import javax.swing.JPanel;

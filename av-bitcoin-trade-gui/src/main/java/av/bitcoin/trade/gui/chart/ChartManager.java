@@ -5,14 +5,14 @@ import av.bitcoin.trade.gui.AppMain;
 import av.bitcoin.trade.gui.draw.ChartLine;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.trade.common.Enums.ValueUnit;
-import org.trade.common.TimeScale;
-import org.trade.common.dto.ChartItemDto;
-import org.trade.common.dto.ChartLineDto;
-import org.trade.common.dto.OrderDto;
+import av.bitcoin.common.Enums.ValueUnit;
+import av.bitcoin.common.TimeScale;
+import av.bitcoin.common.dto.ChartItemDto;
+import av.bitcoin.common.dto.ChartLineDto;
+import av.bitcoin.common.dto.OrderDto;
 import av.bitcoin.trade.gui.data.QuoteConsumer;
-import org.trade.common.QuoteBar;
-import org.trade.common.indicator.Sma;
+import av.bitcoin.common.QuoteBar;
+import av.bitcoin.common.indicator.Sma;
 import av.bitcoin.trade.gui.draw.ChartBar;
 import av.bitcoin.trade.gui.draw.ChartOrderFilled;
 import av.bitcoin.trade.gui.draw.ChartPoint;
@@ -25,7 +25,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.trade.common.Enums.*;
+import static av.bitcoin.common.Enums.*;
 
 public class ChartManager {
     private static final Logger log = LoggerFactory.getLogger(ChartManager.class);

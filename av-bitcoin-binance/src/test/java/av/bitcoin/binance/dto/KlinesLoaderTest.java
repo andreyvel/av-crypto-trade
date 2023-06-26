@@ -2,7 +2,7 @@ package av.bitcoin.binance.dto;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.trade.common.QuoteBar;
+import av.bitcoin.common.QuoteBar;
 
 import java.nio.file.Files;
 import java.nio.file.Path;

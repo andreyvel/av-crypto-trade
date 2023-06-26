@@ -2,11 +2,11 @@ package av.bitcoin.trade.gui;
 
 import av.bitcoin.trade.gui.chart.ChartManager;
 import av.bitcoin.trade.gui.chart.Colors;
-import org.trade.common.AvgWindow;
-import org.trade.common.Enums;
-import org.trade.common.QuoteTick;
-import org.trade.common.Utils;
-import org.trade.common.dto.OrderDto;
+import av.bitcoin.common.AvgWindow;
+import av.bitcoin.common.Enums;
+import av.bitcoin.common.QuoteTick;
+import av.bitcoin.common.Utils;
+import av.bitcoin.common.dto.OrderDto;
 
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;

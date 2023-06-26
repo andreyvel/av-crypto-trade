@@ -2,7 +2,7 @@ package av.bitcoin.trade.gui;
 
 import av.bitcoin.trade.gui.chart.ChartManager;
 import av.bitcoin.trade.gui.chart.ChartPanel;
-import org.trade.common.Enums;
+import av.bitcoin.common.Enums;
 
 import javax.swing.JPanel;
 import java.awt.BorderLayout;

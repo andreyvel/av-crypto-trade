@@ -5,16 +5,16 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.trade.common.QuoteBar;
-import org.trade.common.TradeCommand;
-import org.trade.common.Utils;
-import org.trade.common.dto.AccountDto;
-import org.trade.common.dto.ChartItemDto;
-import org.trade.common.dto.ChartLineDto;
-import org.trade.common.dto.OrderDto;
-import org.trade.common.dto.PingDto;
-import org.trade.common.dto.QuoteBarDto;
-import org.trade.common.dto.QuoteTickDto;
+import av.bitcoin.common.QuoteBar;
+import av.bitcoin.common.TradeCommand;
+import av.bitcoin.common.Utils;
+import av.bitcoin.common.dto.AccountDto;
+import av.bitcoin.common.dto.ChartItemDto;
+import av.bitcoin.common.dto.ChartLineDto;
+import av.bitcoin.common.dto.OrderDto;
+import av.bitcoin.common.dto.PingDto;
+import av.bitcoin.common.dto.QuoteBarDto;
+import av.bitcoin.common.dto.QuoteTickDto;
 import org.zeromq.SocketType;
 import org.zeromq.ZContext;
 import org.zeromq.ZMQ;
@@ -29,7 +29,7 @@ import java.util.List;
 import java.util.SortedMap;
 import java.util.concurrent.ConcurrentSkipListMap;
 
-import static org.trade.common.Enums.*;
+import static av.bitcoin.common.Enums.*;
 
 public class ClientSession {
     private static final Logger log = LoggerFactory.getLogger(ClientSession.class);

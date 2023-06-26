@@ -3,7 +3,7 @@ package av.bitcoin.binance.http;
 import com.sun.net.httpserver.HttpExchange;
 import av.bitcoin.binance.AppMain;
 import org.json.JSONObject;
-import org.trade.common.httpserver.HttpHandlerEx;
+import av.bitcoin.common.httpserver.HttpHandlerEx;
 
 public class PingHandler extends HttpHandlerEx {
     @Override

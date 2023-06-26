@@ -2,10 +2,10 @@ package av.bitcoin.trade.gui;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.trade.common.Utils;
-import org.trade.common.dto.AccountDto;
-import org.trade.common.dto.AccountDto.AccountBalance;
-import org.trade.common.dto.OrderDto;
+import av.bitcoin.common.Utils;
+import av.bitcoin.common.dto.AccountDto;
+import av.bitcoin.common.dto.AccountDto.AccountBalance;
+import av.bitcoin.common.dto.OrderDto;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-import static org.trade.common.Enums.*;
+import static av.bitcoin.common.Enums.*;
 
 public class TabReportPanel extends JPanel implements ITabRefresh {
     private static final Logger log = LoggerFactory.getLogger(TabReportPanel.class);

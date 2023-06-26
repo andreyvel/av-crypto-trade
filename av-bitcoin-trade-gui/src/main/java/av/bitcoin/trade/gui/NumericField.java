@@ -1,6 +1,6 @@
 package av.bitcoin.trade.gui;
 
-import org.trade.common.Utils;
+import av.bitcoin.common.Utils;
 
 import javax.swing.JTextField;
 import java.awt.event.KeyEvent;

@@ -2,12 +2,12 @@ package av.bitcoin.binance.http;
 
 import com.sun.net.httpserver.HttpExchange;
 import av.bitcoin.binance.TradeSession;
-import org.trade.common.QuoteTick;
-import org.trade.common.Utils;
-import org.trade.common.dto.QuoteTickCont;
-import org.trade.common.dto.ErrorDto;
-import org.trade.common.dto.QuoteTickDto;
-import org.trade.common.httpserver.HttpHandlerEx;
+import av.bitcoin.common.QuoteTick;
+import av.bitcoin.common.Utils;
+import av.bitcoin.common.dto.QuoteTickCont;
+import av.bitcoin.common.dto.ErrorDto;
+import av.bitcoin.common.dto.QuoteTickDto;
+import av.bitcoin.common.httpserver.HttpHandlerEx;
 
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;

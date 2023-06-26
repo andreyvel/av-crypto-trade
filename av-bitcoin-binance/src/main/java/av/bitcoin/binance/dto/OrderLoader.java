@@ -4,8 +4,8 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.trade.common.AvgValue;
-import org.trade.common.dto.OrderDto;
+import av.bitcoin.common.AvgValue;
+import av.bitcoin.common.dto.OrderDto;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -18,7 +18,7 @@ import java.awt.event.ComponentEvent;
 import java.awt.event.KeyEvent;
 import javax.swing.JTabbedPane;
 
-import static org.trade.common.Enums.*;
+import static av.bitcoin.common.Enums.*;
 
 public class AppFrame extends JFrame {
     private static final Logger log = LoggerFactory.getLogger(AppFrame.class);

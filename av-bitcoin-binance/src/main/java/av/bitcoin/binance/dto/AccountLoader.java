@@ -2,9 +2,9 @@ package av.bitcoin.binance.dto;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.trade.common.Utils;
-import org.trade.common.dto.AccountDto;
-import org.trade.common.dto.AccountDto.AccountBalance;
+import av.bitcoin.common.Utils;
+import av.bitcoin.common.dto.AccountDto;
+import av.bitcoin.common.dto.AccountDto.AccountBalance;
 
 public class AccountLoader {
     //"E": 1573200697110,           //Event Time

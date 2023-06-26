@@ -2,8 +2,8 @@ package av.bitcoin.binance.dto;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.trade.common.dto.AccountDto;
-import org.trade.common.dto.AccountDto.AccountBalance;
+import av.bitcoin.common.dto.AccountDto;
+import av.bitcoin.common.dto.AccountDto.AccountBalance;
 
 import java.nio.file.Files;
 import java.nio.file.Path;

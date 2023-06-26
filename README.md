@@ -1,6 +1,6 @@
 # av-bitcoin-trade-gui
 
-Java trade gui client for bitcoin trade
+Java trade GUI client for bitcoin trade
 
 ## Features
 - Support creating limit orders on the chart (drag red runner and press Spacebar)

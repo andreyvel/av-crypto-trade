@@ -2,12 +2,12 @@ package av.bitcoin.binance.http;
 
 import com.sun.net.httpserver.HttpExchange;
 import av.bitcoin.binance.TradeSession;
-import org.trade.common.QuoteBar;
-import org.trade.common.dto.QuoteBarCont;
-import org.trade.common.dto.QuoteAggCont;
-import org.trade.common.dto.ErrorDto;
-import org.trade.common.dto.QuoteBarDto;
-import org.trade.common.httpserver.HttpHandlerEx;
+import av.bitcoin.common.QuoteBar;
+import av.bitcoin.common.dto.QuoteBarCont;
+import av.bitcoin.common.dto.QuoteAggCont;
+import av.bitcoin.common.dto.ErrorDto;
+import av.bitcoin.common.dto.QuoteBarDto;
+import av.bitcoin.common.httpserver.HttpHandlerEx;
 
 import java.util.HashMap;
 import java.util.List;

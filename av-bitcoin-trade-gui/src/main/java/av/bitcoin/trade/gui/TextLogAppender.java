@@ -2,7 +2,7 @@ package av.bitcoin.trade.gui;
 
 import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.core.AppenderBase;
-import org.trade.common.Utils;
+import av.bitcoin.common.Utils;
 
 import javax.swing.JTextArea;
 import java.time.LocalDateTime;

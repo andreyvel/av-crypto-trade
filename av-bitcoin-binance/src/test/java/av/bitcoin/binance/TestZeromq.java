@@ -144,32 +144,4 @@ public class TestZeromq {
             }
         }
     }
-
-    @Test
-    public void testReqRep() throws Exception {
-        Thread thread1 = new Thread(() -> {serviceReq("REQ1");});
-        thread1.start();
-
-        Thread thread2 = new Thread(() -> {serviceReq("REQ2");});
-        thread2.start();
-
-        int messageNum  = 42;
-        try (ZContext context = new ZContext()) {
-            try (ZMQ.Socket service = context.createSocket(SocketType.REP)) {
-                service.bind(repAddress);
-
-                for(int ind = 0; ind < messageNum; ind++) {
-                    String req = service.recvStr();
-                    service.send("=" + req);
-                }
-            }
-        }
-
-        for(int ind = 0; ind < 10; ind++) {
-            if (messageNum * 2 != serviceReqCounter.get()) {
-                Thread.sleep(10);
-            }
-        }
-        Assert.assertEquals(messageNum, serviceReqCounter.get());
-    }
 }

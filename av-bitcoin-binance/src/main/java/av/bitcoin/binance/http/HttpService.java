@@ -11,10 +11,10 @@ import com.sun.net.httpserver.HttpServer;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.trade.common.dto.ErrorDto;
-import org.trade.common.httpserver.HttpHandlerEx;
+import av.bitcoin.common.dto.ErrorDto;
+import av.bitcoin.common.httpserver.HttpHandlerEx;
 
-import static org.trade.common.Enums.*;
+import static av.bitcoin.common.Enums.*;
 
 public class HttpService {
     private static final Logger log = LoggerFactory.getLogger(HttpService.class.getName());

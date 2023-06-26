@@ -2,7 +2,7 @@ package av.bitcoin.binance;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.trade.common.Utils;
+import av.bitcoin.common.Utils;
 
 import java.time.LocalDateTime;
 import java.util.concurrent.ConcurrentLinkedQueue;

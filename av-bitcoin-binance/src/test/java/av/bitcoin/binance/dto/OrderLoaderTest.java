@@ -2,8 +2,8 @@ package av.bitcoin.binance.dto;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.trade.common.Utils;
-import org.trade.common.dto.OrderDto;
+import av.bitcoin.common.Utils;
+import av.bitcoin.common.dto.OrderDto;
 
 import java.nio.file.Files;
 import java.nio.file.Path;

@@ -2,7 +2,7 @@ package av.bitcoin.binance;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.trade.common.TimeScale;
+import av.bitcoin.common.TimeScale;
 import java.time.LocalDateTime;
 
 public class TimeScaleTest {

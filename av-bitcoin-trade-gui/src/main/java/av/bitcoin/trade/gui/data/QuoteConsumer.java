@@ -1,6 +1,6 @@
 package av.bitcoin.trade.gui.data;
 
-import org.trade.common.*;
+import av.bitcoin.common.*;
 
 import java.time.Duration;
 import java.time.LocalDateTime;

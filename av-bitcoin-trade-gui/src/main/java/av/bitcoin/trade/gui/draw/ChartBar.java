@@ -1,8 +1,8 @@
 package av.bitcoin.trade.gui.draw;
 
 import av.bitcoin.trade.gui.chart.ChartTheme;
-import org.trade.common.QuoteBar;
-import org.trade.common.Utils;
+import av.bitcoin.common.QuoteBar;
+import av.bitcoin.common.Utils;
 
 import java.awt.Color;
 import java.awt.Graphics2D;

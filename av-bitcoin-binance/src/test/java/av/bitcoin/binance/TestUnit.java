@@ -1,8 +1,8 @@
 package av.bitcoin.binance;
 
-import org.trade.common.NanoTimer;
-import org.trade.common.TimeScale;
-import org.trade.common.Utils;
+import av.bitcoin.common.NanoTimer;
+import av.bitcoin.common.TimeScale;
+import av.bitcoin.common.Utils;
 import org.json.JSONObject;
 import org.junit.Assert;
 import org.junit.Test;

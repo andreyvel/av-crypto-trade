@@ -1,7 +1,7 @@
 package av.bitcoin.binance.dto;
 
 import org.json.JSONObject;
-import org.trade.common.dto.QuoteBarDto;
+import av.bitcoin.common.dto.QuoteBarDto;
 
 public class TickerLoader {
     public static QuoteBarDto load(String content) {

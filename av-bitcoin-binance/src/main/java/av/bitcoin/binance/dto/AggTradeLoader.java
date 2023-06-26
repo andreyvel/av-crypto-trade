@@ -1,7 +1,7 @@
 package av.bitcoin.binance.dto;
 
 import org.json.JSONObject;
-import org.trade.common.dto.QuoteTickDto;
+import av.bitcoin.common.dto.QuoteTickDto;
 
 public class AggTradeLoader {
     public static QuoteTickDto load(String content) {

@@ -35,9 +35,9 @@
             <version>3.0.0rc2</version>
         </dependency>
         <dependency>
-            <groupId>org.trade</groupId>
-            <artifactId>org-trade-common</artifactId>
-            <version>1.0</version>
+            <groupId>av.bitcoin</groupId>
+            <artifactId>av-bitcoin-common</artifactId>
+            <version>1.0.0</version>
         </dependency>
     </dependencies>
 

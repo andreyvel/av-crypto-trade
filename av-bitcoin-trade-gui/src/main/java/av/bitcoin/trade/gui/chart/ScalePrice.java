@@ -1,7 +1,7 @@
 package av.bitcoin.trade.gui.chart;
 
-import org.trade.common.Enums.ValueUnit;
-import org.trade.common.Utils;
+import av.bitcoin.common.Enums.ValueUnit;
+import av.bitcoin.common.Utils;
 
 import java.awt.*;
 import java.text.DecimalFormat;

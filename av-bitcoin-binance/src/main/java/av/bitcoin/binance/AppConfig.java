@@ -3,7 +3,7 @@ package av.bitcoin.binance;
 import com.binance.connector.client.utils.signaturegenerator.HmacSignatureGenerator;
 import com.binance.connector.client.utils.signaturegenerator.RsaSignatureGenerator;
 import com.binance.connector.client.utils.signaturegenerator.SignatureGenerator;
-import org.trade.common.Utils;
+import av.bitcoin.common.Utils;
 import org.yaml.snakeyaml.Yaml;
 
 import org.slf4j.Logger;

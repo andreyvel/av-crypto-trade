@@ -4,8 +4,8 @@ import com.binance.connector.client.impl.WebSocketApiClientImpl;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.trade.common.Utils;
-import org.trade.common.dto.OrderDto;
+import av.bitcoin.common.Utils;
+import av.bitcoin.common.dto.OrderDto;
 
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.UUID;
 
-import static org.trade.common.Enums.*;
+import static av.bitcoin.common.Enums.*;
 
 /*
 Available timeInForce options, setting how long the order should be active before expiration:

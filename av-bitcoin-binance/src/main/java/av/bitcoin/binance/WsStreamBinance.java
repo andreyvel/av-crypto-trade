@@ -7,8 +7,8 @@ import com.binance.connector.client.impl.WebSocketStreamClientImpl;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.trade.common.dto.OrderDto;
-import org.trade.common.dto.QuoteTickDto;
+import av.bitcoin.common.dto.OrderDto;
+import av.bitcoin.common.dto.QuoteTickDto;
 
 import java.util.AbstractQueue;
 import java.util.ArrayList;

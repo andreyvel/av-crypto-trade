@@ -17,6 +17,13 @@ subscribe_interval_num: 1000  # max 1000
 api_key: "****"
 hmac_private_key: "****"
 #rsa_private_file: "****.pem"
-
 ws_stream_url: "wss://testnet.binance.vision"
 ws_api_url: "wss://testnet.binance.vision/ws-api/v3"
+
+# ------------------------------------------------------------------------------
+# https://github.com/binance/binance-spot-api-docs/blob/master/web-socket-streams.md
+# ------------------------------------------------------------------------------
+#api_key: "****"
+#hmac_private_key: "****"
+#ws_stream_url: "wss://stream.binance.com:9443"
+#ws_api_url: "wss://ws-api.binance.com/ws-api/v3"

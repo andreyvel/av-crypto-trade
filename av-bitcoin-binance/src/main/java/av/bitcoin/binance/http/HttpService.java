@@ -14,8 +14,6 @@ import org.slf4j.LoggerFactory;
 import av.bitcoin.common.dto.ErrorDto;
 import av.bitcoin.common.httpserver.HttpHandlerEx;
 
-import static av.bitcoin.common.Enums.*;
-
 public class HttpService {
     private static final Logger log = LoggerFactory.getLogger(HttpService.class.getName());
 
@@ -26,7 +24,7 @@ public class HttpService {
         server.createContext("/quotes", new QuotesHandler());
 
         server.createContext("/ping", new PingHandler());
-        server.createContext("/account", new AccountHandler());
+        server.createContext("/accountStatus", new AccountHandler());
         server.createContext("/accountRefresh", new AccountRefresh());
 
         server.createContext("/ordersAll", new OrdersAll());
@@ -56,7 +54,7 @@ public class HttpService {
             sb.append("<br/>\n");
 
             sb.append("<a href='ping'>ping</a><br/>\n");
-            sb.append("<a href='account'>account</a><br/>\n");
+            sb.append("<a href='accountStatus'>accountStatus</a><br/>\n");
             sb.append("<a href='accountRefresh'>accountRefresh</a><br/>\n");
             sb.append("<br/>\n");
 
@@ -148,21 +146,4 @@ public class HttpService {
             return jsonMsg.toString();
         }
     }
-
-//public class OrdersOpen extends HttpHandlerEx {
-//    @Override
-//    public String getResponseBody(HttpExchange req) {
-//        this.mediaType = MediaType.APPLICATION_JSON;
-//
-//        JSONObject jsonRoot = new JSONObject();
-//        JSONArray arr1 = new JSONArray();
-//        for (OrderDto order : TradeSession.openOrdersDto.values()) {
-//            JSONObject order2 = order.serialize();
-//            arr1.put(order2);
-//        }
-//
-//        jsonRoot.put("orders", arr1);
-//        return jsonRoot.toString();
-//    }
-//}
 }

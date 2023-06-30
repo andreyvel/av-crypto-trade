@@ -11,7 +11,7 @@ public class AppMain {
     private static WsApiBinance wsApiBinance;
     private static WsStreamBinance wsStreamBinance;
     private static TradeStreamPublisher tradeStreamPublisher;
-    private static TradeCommandSubscriber tradeCommandSubscriber;
+    private static TradeCommandListener tradeCommandListener;
     public static TradeScheduler tradeScheduler;
 
     public static WsStreamBinance wsStreamBinance() {
@@ -43,8 +43,8 @@ public class AppMain {
             wsApiBinance = new WsApiBinance(wsApiClient, tradeStreamPublisher);
             wsApiBinance.start();
 
-            tradeCommandSubscriber = new TradeCommandSubscriber(wsApiBinance);
-            tradeCommandSubscriber.start();
+            tradeCommandListener = new TradeCommandListener(wsApiBinance);
+            tradeCommandListener.start();
 
             tradeScheduler = new TradeScheduler(wsApiBinance);
             tradeScheduler.start();
@@ -102,7 +102,7 @@ public class AppMain {
         }
 
         try {
-            tradeCommandSubscriber.stop();
+            tradeCommandListener.stop();
         }
         catch (Exception e) {
             log.error(null, e);

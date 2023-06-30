@@ -12,17 +12,16 @@ import org.zeromq.ZMQ;
 
 import static av.bitcoin.common.Enums.*;
 
-public class TradeCommandSubscriber {
-    private static final Logger log = LoggerFactory.getLogger(TradeCommandSubscriber.class);
+public class TradeCommandListener {
+    private static final Logger log = LoggerFactory.getLogger(TradeCommandListener.class);
     private WsApiBinance wsApiBinance;
     private Thread threadTradeStreamSub = null;
     private ZContext zmqContext = null;
-    public TradeCommandSubscriber(WsApiBinance wsApiBinance) {
+    public TradeCommandListener(WsApiBinance wsApiBinance) {
         this.wsApiBinance = wsApiBinance;
     }
 
     public void start() {
-        log.warn("Starting ZMQ events publisher: {}", AppConfig.zmqTradeStreamPub());
         zmqContext = new ZContext();
         threadTradeStreamSub = new Thread(() -> tradeStreamListener());
         threadTradeStreamSub.start();

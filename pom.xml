@@ -12,6 +12,7 @@
     <modules>
         <module>av-bitcoin-binance</module>
         <module>av-bitcoin-common</module>
+        <module>av-bitcoin-emulator</module>
         <module>av-bitcoin-trade-gui</module>
     </modules>
 

@@ -134,8 +134,38 @@ public class AccountDto {
             return free;
         }
 
+        public void freeAddCheck(double freeAdd) {
+            if (this.free + freeAdd < 0) {
+                throw new RuntimeException("Too low balance for " + asset
+                        + ": free=" + Utils.format(free, 4)
+                        + ", locked=" + Utils.format(locked, 4)
+                        + ", freeAdd=" + Utils.format(freeAdd, 4));
+            }
+        }
+
+        public void freeAdd(double valueAdd) {
+            freeAddCheck(valueAdd);
+            this.free += valueAdd;
+        }
+
         public double locked() {
             return locked;
+        }
+
+        public void lockAddCheck(double lockAdd) {
+            freeAddCheck(-lockAdd);
+            if (this.locked + lockAdd < 0) {
+                throw new RuntimeException("Too low balance for " + asset
+                        + ": free=" + Utils.format(free, 4)
+                        + ", locked=" + Utils.format(locked, 4)
+                        + ", lockAdd=" + Utils.format(lockAdd, 4));
+            }
+        }
+
+        public void lockAdd(double value) {
+            lockAddCheck(value);
+            this.locked += value;
+            this.free -= value;
         }
 
         public void serialize(JSONObject obj) {

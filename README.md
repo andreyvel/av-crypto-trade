@@ -12,12 +12,22 @@ Java trade GUI client for bitcoin trade
 - This software can be used to visualize trading bot orders.
 
 ## How to start
+
+### Build project
 - Configure java environment (install java jdk-17 or higher)
   - export JAVA_HOME=/opt/jdk-20.0.1
   - export PATH=$JAVA_HOME/bin:$PATH
-- Run ./mvn-install.sh for building jar files from sources
+- Run ./mvn-build.sh for creating jar files from sources
+
+### Start quote proxy server
+- Configure av-bitcoin-emulator.yaml and run ./av-bitcoin-emulator.sh<br>
+  emulator generate random bitcoin quotes, it used for local GUI client testing
+- or
 - Configure av-bitcoin-binance.yaml and run ./av-bitcoin-binance.sh
-- Check trade REST API http://localhost:8089 
+  this app used binance-connector-java for data exchange
+
+### Start GUI client
+- Check proxy server REST API http://localhost:8089
 - Configure av-bitcoin-trade-gui.yaml and run ./av-bitcoin-trade-gui.sh
 
 

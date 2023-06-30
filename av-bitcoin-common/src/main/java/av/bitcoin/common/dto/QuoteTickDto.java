@@ -4,11 +4,18 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import av.bitcoin.common.QuoteTick;
 import av.bitcoin.common.Utils;
+
+import java.time.LocalDateTime;
 import java.util.Collection;
 
 public class QuoteTickDto {
     public final String symbol;
     public final QuoteTick quoteTick;
+
+    public QuoteTickDto(String symbol, LocalDateTime date, double price, double qnt) {
+        this.quoteTick = new QuoteTick(date, price, qnt);
+        this.symbol = symbol;
+    }
 
     public QuoteTickDto(String symbol, long epochMsUtc, double price, double qnt) {
         this.quoteTick = new QuoteTick(epochMsUtc, price, qnt);

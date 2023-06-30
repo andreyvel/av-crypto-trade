@@ -145,13 +145,15 @@ public class ClientSession {
             HttpResponse response = client.send(request, HttpResponse.BodyHandlers.ofString());
             String content = response.body().toString();
             JSONObject ordersObj = new JSONObject(content);
+            SortedMap<Long, OrderDto> ordersNew = new ConcurrentSkipListMap<>();
 
             JSONArray resultArr = ordersObj.optJSONArray("orders");
             for(int ind = 0; ind < resultArr.length(); ind++) {
                 JSONObject rowObj = resultArr.optJSONObject(ind);
                 OrderDto order = new OrderDto(rowObj);
-                ordersAll.put(order.orderId(), order);
+                ordersNew.put(order.orderId(), order);
             }
+            ordersAll = ordersNew;
         } catch(ConnectException ex) {
             log.error("{}, {}", restUrl, ex.toString());
             return 1;
@@ -186,7 +188,7 @@ public class ClientSession {
 
     public int refreshQuoteConsumer(QuoteConsumer sub) throws Exception {
         String content = null;
-        String params = "symbol=" + sub.symbol() + "&interval=" + sub.interval() + "&limit=" + sub.limit();
+        String params = "symbol=" + sub.symbol() + "&interval=" + sub.interval() + "&limit=1000"; // sub.limit()
         URL restUrl = new URL(new URL(AppConfig.restService()), "quotes?" + params);
 
         try {
@@ -221,7 +223,8 @@ public class ClientSession {
                         }
 
                         if ("quote_tick".equals(eventType)) {
-                            // {"symbol":"BTCUSDT","dateMs":1686062700943,"price":26004.6,"qnt":0.062669,"source":"aggTrade","type":"quote_tick"}
+                            // {"symbol":"BTCUSDT","dateMs":1686062700943,"price":26004.6,
+                            // "qnt":0.062669,"source":"aggTrade","type":"quote_tick"}
                             for(QuoteConsumer sub : quoteSubscribers.values()) {
                                 try {
                                     QuoteTickDto tickDto = new QuoteTickDto(jsonObj);

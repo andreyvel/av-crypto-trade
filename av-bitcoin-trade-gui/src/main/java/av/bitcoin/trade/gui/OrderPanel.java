@@ -14,6 +14,9 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 import java.awt.*;
 import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+
+import static java.time.temporal.ChronoUnit.MILLIS;
 
 public class OrderPanel extends JPanel {
     private NumericField numBuyQnt = new NumericField(0, 4);
@@ -149,7 +152,12 @@ public class OrderPanel extends JPanel {
 
         QuoteTick lastTick = chartManager.quoteConsumer().lastTick();
         if (lastTick != null) {
-            long delayMs = Utils.delayMsUtc(lastTick.date());
+            long delayMs = MILLIS.between(lastTick.date(), lastTick.createdLocal());
+            long delayMsUtc = MILLIS.between(lastTick.date(), lastTick.createdUtc());
+            if (Math.abs(delayMsUtc) < Math.abs(delayMs)) {
+                delayMs = delayMsUtc; // TODO Remove adjust between UTC or Local time
+            }
+
             long delayMsAvg = (long) delayMsAgg.update(LocalDateTime.now(), delayMs);
             numDelayMs.setValue(delayMsAvg);
 

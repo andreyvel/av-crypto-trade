@@ -1,14 +1,15 @@
 # Changelog
 
 ## 1.0.0 - 2022-06-23
-### Added
 - Initial code release.
 
-## 2022-06-26
-### Renamed common package
+## 1.0.0 - 2022-06-26
+- Renamed common package
 
-## Roadmap
-- Java quote emulator + adviser example
-- Optional order confirmation
-- Binance adapter reconnection
-- Python quote emulator + adviser example
+## 1.0.1 - 2022-07-01
+- Added random quote emulator
+
+# Roadmap and Bugfix
+-  restore binance connection after local network restarting
+
+

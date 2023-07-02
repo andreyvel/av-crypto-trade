@@ -10,6 +10,7 @@
 - Added random quote emulator
 
 # Roadmap and Bugfix
--  restore binance connection after local network restarting
-
-
+- Restore binance connection after local network restarting
+- Rescale price scale using mouse
+- Vertical drag and move chart
+- Add alerts tab + alert rules

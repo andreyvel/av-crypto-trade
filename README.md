@@ -1,15 +1,15 @@
 # av-bitcoin-trade-gui
 
-Java trade GUI client for bitcoin trade
+Linux GUI client for bitcoin trading, supports Binance API
 
 ## Features
-- Support creating limit orders on the chart (drag red runner and press Spacebar)
-- Support display and canceling limit orders on the chart
-- Displays fired order on the chart
-- ZMQ API for displaying custom elements on chart
-- Simple API for integrating any trade platform
-- Supports binance-connector-java for binance clients
-- This software can be used to visualize trading bot orders.
+- Supports creating limit orders on the chart (drag red runner and press Spacebar)
+- It is possible to create new order or to cancel it directly on the chart
+- Displays filled orders on the chart
+- ZMQ API for displaying custom elements on chart (points, lines)
+- Simple API for integrating into any trade platform
+- Supports binance-api by using binance-connector-java
+- This software can be used to visualize auto trading.
 
 ## How to start
 
@@ -33,6 +33,9 @@ Java trade GUI client for bitcoin trade
 
 Chart panel
 ![Chart panel](docs/chart.png)
+
+Example how advice points displayed on the chart
+![Chart panel](docs/advice.png)
 
 Report panel
 ![Report panel](docs/report.png)

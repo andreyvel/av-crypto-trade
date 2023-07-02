@@ -1,13 +1,8 @@
 package av.bitcoin.binance;
 
 import av.bitcoin.common.NanoTimer;
-import av.bitcoin.common.TimeScale;
-import av.bitcoin.common.Utils;
 import org.json.JSONObject;
-import org.junit.Assert;
 import org.junit.Test;
-
-import java.time.LocalDateTime;
 
 public class TestUnit {
     @Test

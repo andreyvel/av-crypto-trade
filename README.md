@@ -15,7 +15,7 @@ Java trade GUI client for bitcoin trade
 
 ### Build project
 - Configure java environment (install java jdk-17 or higher)
-  - export JAVA_HOME=/opt/jdk-20.0.1
+  - export JAVA_HOME=/opt/jdk-17.0.2
   - export PATH=$JAVA_HOME/bin:$PATH
 - Run ./mvn-build.sh for creating jar files from sources
 

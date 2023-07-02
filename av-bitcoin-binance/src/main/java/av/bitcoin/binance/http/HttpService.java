@@ -125,7 +125,7 @@ public class HttpService {
         }
     }
 
-    public class CancelOrderHandler extends HttpHandlerEx {
+    public static class CancelOrderHandler extends HttpHandlerEx {
         @Override
         public String getResponseBody(HttpExchange req) {
             this.mediaType = HttpHandlerEx.MediaType.APPLICATION_JSON;

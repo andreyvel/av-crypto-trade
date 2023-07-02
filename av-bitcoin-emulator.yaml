@@ -1,4 +1,5 @@
 trade_rest_api_port: 8089
+rest_api_service: "http://localhost:8089"
 
 trade_advice_pub: "tcp://localhost:4501"
 trade_stream_pub: "tcp://localhost:4503"

@@ -9,9 +9,9 @@ public class ChartLine extends IChartEntity {
     private double value0;
     private double value1;
     private Color color;
-    private Stroke dashed = new BasicStroke(1, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 0, new float[]{3}, 0);
+    private Stroke lineStroke = new BasicStroke(1.0f);
 
-    public ChartLine(LocalDateTime date0, LocalDateTime date1, double value0, double value1, Color color) {
+    public ChartLine(LocalDateTime date0, double value0, LocalDateTime date1, double value1, Color color) {
         this.date0 = date0;
         this.date1 = date1;
         this.value0 = value0;
@@ -34,7 +34,7 @@ public class ChartLine extends IChartEntity {
         }
 
         g.setColor(color);
-        g.setStroke(dashed);
+        g.setStroke(lineStroke);
         g.drawLine(posX0, posY0, posX1, posY1);
     }
 }

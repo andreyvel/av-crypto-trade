@@ -142,19 +142,24 @@ public class ChartManager {
         Color colorMa = Colors.getColor("#880000");
         List<IChartEntity> chartEntitiesNew = new ArrayList<>();
 
+        double prevMa = 0;
+        QuoteBar barPrev = null;
         for(QuoteBar bar : consumer.quoteBarMap().values()) {
             double valueMa = ma.update(bar.close());
             long deltaSec = Duration.between(scaleTime.dateTimeMin(), bar.date()).toSeconds();
 
-            if (-scaleTimeStepSec() < deltaSec) {
+            if (-scaleTimeStepSec() < deltaSec && barPrev != null) {
                 // Add bar renders
                 ChartBar cb = new ChartBar(bar);
                 chartEntitiesNew.add(cb);
 
                 // IndicatorMa
                 ChartPoint cp = new ChartPoint(bar.date(), valueMa, 2, colorMa);
+                //ChartLine cp = new ChartLine(barPrev.date(), prevMa, bar.date(), valueMa, colorMa);
                 chartEntitiesNew.add(cp);
             }
+            barPrev = bar;
+            prevMa = valueMa;
         }
 
         double lastPrice = lastPrice();
@@ -165,7 +170,7 @@ public class ChartManager {
                 double value1 = item.calcValue1(lastPrice);
                 Color color = Colors.getColor(item.color());
 
-                ChartLine cp = new ChartLine(item.date0(), item.date1(), value0, value1, color);
+                ChartLine cp = new ChartLine(item.date0(), value0, item.date1(), value1, color);
                 chartEntitiesNew.add(cp);
             }
         }

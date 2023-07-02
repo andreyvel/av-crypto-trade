@@ -59,6 +59,9 @@ public class AppRandomQuote {
 
             Thread quoteTickThread = new Thread(() -> threadCode());
             quoteTickThread.start();
+
+            AdvicePublisher advicePublisher = new AdvicePublisher();
+            advicePublisher.start(AppConfig.zmqTradeAdvicePub());
         } catch (Exception e) {
             log.error(e.getMessage(), e);
         }

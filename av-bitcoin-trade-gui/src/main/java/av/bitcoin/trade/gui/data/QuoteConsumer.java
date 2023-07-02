@@ -99,7 +99,7 @@ public class QuoteConsumer implements IQuoteConsumer {
     public void update(QuoteTick quoteTick) {
         LocalDateTime date = TimeScale.truncateTo(quoteTick.date(), interval);
 
-        if (!lastBar.date().equals(date)) {
+        if (lastBar == null || !lastBar.date().equals(date)) {
             lastBar = new QuoteBar(date, quoteTick.price());
             quoteBarMap.put(lastBar.date(), lastBar);
         }

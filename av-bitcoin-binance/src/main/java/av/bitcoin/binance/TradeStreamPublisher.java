@@ -13,15 +13,15 @@ public class TradeStreamPublisher {
     private ZMQ.Socket zmqStreamPublisher = null;
 
     public void start() {
+        log.warn("Starting ZMQ trade events publisher: {}", AppConfig.zmqTradeStreamPub());
         zmqContext = new ZContext();
-        log.warn("Starting ZMQ events publisher: {}", AppConfig.zmqTradeStreamPub());
         zmqStreamPublisher = zmqContext.createSocket(SocketType.PUB);
         zmqStreamPublisher.bind(AppConfig.zmqTradeStreamPub());
     }
 
     public void stop() {
         if (!zmqContext.isClosed()) {
-            log.warn("Closing ZMQ events publisher: {}", AppConfig.zmqTradeStreamPub());
+            log.warn("Stop ZMQ trade events publisher: {}", AppConfig.zmqTradeStreamPub());
             zmqStreamPublisher.close();
             zmqContext.close();
         }

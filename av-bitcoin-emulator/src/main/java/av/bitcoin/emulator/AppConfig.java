@@ -15,6 +15,8 @@ import java.util.Map;
 public class AppConfig {
     private static final Logger log = LoggerFactory.getLogger(AppConfig.class);
     private static int tradeRestApiPort;
+    private static String restApiService;
+
     private static String zmqTradeAdvicePub;
     private static String zmqTradeStreamPub;
     private static String zmqTradeStreamSub;
@@ -41,6 +43,7 @@ public class AppConfig {
         Map<String, Object> propertyMap = yaml.load(new FileInputStream(configFileName));
 
         tradeRestApiPort = getPropertyInt(propertyMap, "trade_rest_api_port", true);
+        restApiService = getPropertyString(propertyMap, "rest_api_service", true);
         zmqTradeAdvicePub = getPropertyString(propertyMap, "trade_advice_pub", true);
         zmqTradeStreamPub = getPropertyString(propertyMap, "trade_stream_pub", true);
         zmqTradeStreamSub = getPropertyString(propertyMap, "trade_stream_sub", true);
@@ -69,6 +72,10 @@ public class AppConfig {
 
     public static int tradeRestApiPort() {
         return tradeRestApiPort;
+    }
+
+    public static String restApiService() {
+        return restApiService;
     }
 
     public static String zmqTradeStreamPub() {

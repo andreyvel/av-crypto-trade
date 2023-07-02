@@ -5,7 +5,6 @@ import av.bitcoin.trade.gui.chart.Colors;
 import av.bitcoin.common.AvgWindow;
 import av.bitcoin.common.Enums;
 import av.bitcoin.common.QuoteTick;
-import av.bitcoin.common.Utils;
 import av.bitcoin.common.dto.OrderDto;
 
 import javax.swing.JCheckBox;
@@ -14,7 +13,6 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 import java.awt.*;
 import java.time.LocalDateTime;
-import java.time.ZoneOffset;
 
 import static java.time.temporal.ChronoUnit.MILLIS;
 

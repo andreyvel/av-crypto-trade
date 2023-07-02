@@ -97,7 +97,7 @@ public class HttpService {
         }
     }
 
-    public class OrdersAll extends HttpHandlerEx {
+    public static class OrdersAll extends HttpHandlerEx {
         @Override
         public String getResponseBody(HttpExchange req) {
             this.mediaType = MediaType.APPLICATION_JSON;

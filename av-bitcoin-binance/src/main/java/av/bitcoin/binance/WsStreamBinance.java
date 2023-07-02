@@ -9,8 +9,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import av.bitcoin.common.dto.OrderDto;
 import av.bitcoin.common.dto.QuoteTickDto;
-
-import java.util.AbstractQueue;
 import java.util.ArrayList;
 
 public class WsStreamBinance {

@@ -31,22 +31,23 @@ public class AdvicePublisher {
 
     public void start(String publisherAddress) {
         Thread advicePublisher = new Thread(() -> {
-            ZContext context = new ZContext();
-            log.warn("Starting ZMQ dummy advice publisher {}...", publisherAddress);
+            try(ZContext context = new ZContext()) {
+                log.warn("Starting ZMQ dummy advice publisher {}...", publisherAddress);
 
-            try (ZMQ.Socket publisher = context.createSocket(SocketType.PUB)) {
-                publisher.bind(publisherAddress);
+                try (ZMQ.Socket publisher = context.createSocket(SocketType.PUB)) {
+                    publisher.bind(publisherAddress);
 
-                while (!Thread.interrupted()) {
-                    try {
-                        Thread.sleep(1000);
-                        for(String symbol : AppConfig.subscribeSymbols()) {
-                            JSONObject rootObj = predictSymbol(symbol);
-                            String json = rootObj.toString();
-                            publisher.send(json);
+                    while (!Thread.interrupted()) {
+                        try {
+                            Thread.sleep(1000);
+                            for (String symbol : AppConfig.subscribeSymbols()) {
+                                JSONObject rootObj = predictSymbol(symbol);
+                                String json = rootObj.toString();
+                                publisher.send(json);
+                            }
+                        } catch (Exception ex) {
+                            log.error(null, ex);
                         }
-                    } catch (Exception ex) {
-                        log.error(null, ex);
                     }
                 }
             }

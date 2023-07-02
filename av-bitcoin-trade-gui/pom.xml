@@ -10,7 +10,6 @@
         <version>1.0.0</version>
     </parent>
 
-    <groupId>av.bitcoin</groupId>
     <artifactId>av-bitcoin-trade-gui</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
@@ -40,6 +39,7 @@
         <plugins>
             <plugin>
                 <artifactId>maven-jar-plugin</artifactId>
+                <version>3.3.0</version>
                 <configuration>
                     <archive>
                         <manifest>
@@ -51,6 +51,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.6.0</version>
                 <executions>
                     <execution>
                         <id>copy-dependencies</id>

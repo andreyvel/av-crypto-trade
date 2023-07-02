@@ -5,7 +5,6 @@ import org.slf4j.LoggerFactory;
 import av.bitcoin.common.Utils;
 
 import java.time.LocalDateTime;
-import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class TradeScheduler {

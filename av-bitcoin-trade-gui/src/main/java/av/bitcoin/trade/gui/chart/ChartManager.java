@@ -5,7 +5,6 @@ import av.bitcoin.trade.gui.AppMain;
 import av.bitcoin.trade.gui.draw.ChartLine;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import av.bitcoin.common.Enums.ValueUnit;
 import av.bitcoin.common.TimeScale;
 import av.bitcoin.common.dto.ChartItemDto;
 import av.bitcoin.common.dto.ChartLineDto;

@@ -14,6 +14,7 @@ import av.bitcoin.common.Utils;
 
 public class AppConfig {
     private static final Logger log = LoggerFactory.getLogger(AppConfig.class);
+    private static final int adviceTimeoutMs = 3_000;
     private static int refreshChartMs = 300;
     private static String restApiService;
     private static String tradeStreamPub;
@@ -90,5 +91,8 @@ public class AppConfig {
     }
     public static int refreshChartMs() {
         return refreshChartMs;
+    }
+    public static int adviceTimeoutMs() {
+        return adviceTimeoutMs;
     }
 }

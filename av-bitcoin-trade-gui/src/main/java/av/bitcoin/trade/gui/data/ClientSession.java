@@ -1,5 +1,6 @@
 package av.bitcoin.trade.gui.data;
 
+import av.bitcoin.common.QuoteTick;
 import av.bitcoin.trade.gui.AppConfig;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -27,6 +28,8 @@ import java.net.http.HttpResponse;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.SortedMap;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.ConcurrentSkipListMap;
 
 import static av.bitcoin.common.Enums.*;
@@ -38,9 +41,11 @@ public class ClientSession {
 
     private HttpClient client = HttpClient.newHttpClient();
     private final SortedMap<String, QuoteConsumer> quoteSubscribers = new ConcurrentSkipListMap<>();
+    private final ConcurrentMap<String, QuoteTick> symbolTicks = new ConcurrentHashMap<>();
     private LocalDateTime refreshAccountLast = LocalDateTime.now().minusDays(1);
-    public List<ChartItemDto> chartItems = null;
-    public List<ChartLineDto> chartLines = null;
+    public LocalDateTime adivceItemsLoaded = null;
+    private List<ChartItemDto> adviceItems = null;
+    private List<ChartLineDto> adviceLines = null;
     private ZContext zmqContext = new ZContext();
     private ZMQ.Socket tradeStreamPublisher = null;
 
@@ -61,6 +66,10 @@ public class ClientSession {
     public AccountDto.AccountBalance accountBalance(String symbol) {
         AccountDto.AccountBalance bal = accountStatus.balances().get(symbol);
         return bal;
+    }
+
+    public ConcurrentMap<String, QuoteTick> symbolTicks() {
+        return symbolTicks;
     }
 
     public void startScheduler() {
@@ -106,10 +115,11 @@ public class ClientSession {
                         String jsonStr = subscriber.recvStr();
                         JSONObject rootObj = new JSONObject(jsonStr);
                         JSONArray jsonArr = rootObj.optJSONArray("chartItems");
-                        chartItems = ChartItemDto.deserialize(jsonArr);
+                        adviceItems = ChartItemDto.deserialize(jsonArr);
 
                         jsonArr = rootObj.optJSONArray("chartLines");
-                        chartLines = ChartLineDto.deserialize(jsonArr);
+                        adviceLines = ChartLineDto.deserialize(jsonArr);
+                        adivceItemsLoaded = LocalDateTime.now();
                     } catch (Exception e) {
                         log.error(null, e);
                     }
@@ -225,9 +235,12 @@ public class ClientSession {
                         if ("quote_tick".equals(eventType)) {
                             // {"symbol":"BTCUSDT","dateMs":1686062700943,"price":26004.6,
                             // "qnt":0.062669,"source":"aggTrade","type":"quote_tick"}
+
+                            QuoteTickDto tickDto = new QuoteTickDto(jsonObj);
+                            symbolTicks.put(tickDto.symbol, tickDto.quoteTick);
+
                             for(QuoteConsumer sub : quoteSubscribers.values()) {
                                 try {
-                                    QuoteTickDto tickDto = new QuoteTickDto(jsonObj);
                                     sub.update(tickDto.quoteTick);
                                 } catch(Exception ex) {
                                     log.error(null, ex);
@@ -295,5 +308,29 @@ public class ClientSession {
     public static double roundPrice(double priceRaw, String symbol) {
         // TODO remove hardcode
         return Utils.round(priceRaw, 0);
+    }
+
+    public List<ChartItemDto> adviceItems() {
+        if (adivceItemsLoaded == null) {
+            return null;
+        }
+
+        long delayMs = Utils.delayMs(adivceItemsLoaded, LocalDateTime.now());
+        if (Math.abs(delayMs) > AppConfig.adviceTimeoutMs())  {
+            return null;
+        }
+        return adviceItems;
+    }
+
+    public List<ChartLineDto> adviceLines() {
+        if (adivceItemsLoaded == null) {
+            return null;
+        }
+
+        long delayMs = Utils.delayMs(adivceItemsLoaded, LocalDateTime.now());
+        if (Math.abs(delayMs) > AppConfig.adviceTimeoutMs())  {
+            return null;
+        }
+        return adviceLines;
     }
 }

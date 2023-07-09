@@ -6,6 +6,7 @@ import av.bitcoin.common.Utils;
 import av.bitcoin.common.dto.AccountDto;
 import av.bitcoin.common.dto.AccountDto.AccountBalance;
 import av.bitcoin.common.dto.OrderDto;
+import av.bitcoin.common.QuoteTick;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,6 +16,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
 
 import static av.bitcoin.common.Enums.*;
@@ -57,13 +59,20 @@ public class TabReportPanel extends JPanel implements ITabRefresh {
                 }
             }
             ordersActive.sort(Comparator.comparingLong(OrderDto::created));
-            appendOrdersHtml(sb, ordersActive, false);
+            appendOrdersHtml(sb, ordersActive, null, false);
 
-            sb.append("<br/><h3>All orders</h3>\n");
             List<OrderDto> ordersAll = new ArrayList<>();
             ordersAll.addAll(AppMain.clientSession.ordersAll().values());
             ordersAll.sort(Comparator.comparingLong(OrderDto::created));
-            appendOrdersHtml(sb, ordersAll, true);
+
+            HashSet<String> symbolSet = new HashSet<>();
+            for(OrderDto order : ordersAll) {
+                if (!symbolSet.contains(order.symbol())) {
+                    symbolSet.add(order.symbol());
+                    sb.append("<br/><h3>All orders: " + order.symbol() + "</h3>\n");
+                    appendOrdersHtml(sb, ordersAll, order.symbol(), true);
+                }
+            }
 
             sb.append("<br/>\n");
             sb.append("<font size='-1'>Report created on " + LocalDateTime.now() + "<font/>\n");
@@ -93,7 +102,7 @@ public class TabReportPanel extends JPanel implements ITabRefresh {
         sb.append("</table>");
     }
 
-    public void appendOrdersHtml(StringBuilder sb, List<OrderDto> orders, boolean totalRow) {
+    public void appendOrdersHtml(StringBuilder sb, List<OrderDto> orders, String symbol, boolean totalVisible) {
         sb.append("<table width='98%' cellspacing='0' cellpadding='1' border='1'>");
         sb.append("<tr style='font-weight:bold'><td>#</td><td>orderId</td>\n");
         sb.append("<td>created</td><td>updated</td>\n");
@@ -102,10 +111,16 @@ public class TabReportPanel extends JPanel implements ITabRefresh {
         sb.append("<td>executedQty</td><td>commission</td></tr>\n");
 
         int rowNum = 1;
-        double comissionTotal = 0;
+        double totalQnt = 0;
+        double totalProfit = 0;
+        double totalComission = 0;
 
         for(OrderDto order : orders) {
-            comissionTotal += order.commission();
+            if (symbol != null && !symbol.equals(order.symbol())) {
+                continue;
+            }
+
+            totalComission += order.commission();
             LocalDateTime created = Utils.epochDateTime(order.created());
             LocalDateTime updated = Utils.epochDateTime(order.updated());
 
@@ -119,10 +134,20 @@ public class TabReportPanel extends JPanel implements ITabRefresh {
             sb.append("<td align='left'>" + order.type() + "</td>");
 
             String statusStyle = null;
-            if ("NEW".equals(order.status())) {
-                statusStyle = "color:#008800";
-            } else if ("CANCELED".equals(order.status())) {
-                statusStyle = "color:#880000";
+            if (OrderStatus.equals(order.status(), OrderStatus.NEW)) {
+                statusStyle = "color:#000066";
+            } else if (OrderStatus.equals(order.status(), OrderStatus.CANCELED)) {
+                statusStyle = "color:#660000";
+            } else if (OrderStatus.equals(order.status(), OrderStatus.FILLED)) {
+                statusStyle = "color:#006600";
+
+                if (OrderSide.equals(order.side(), OrderSide.BUY)) {
+                    totalQnt += order.quantity();
+                    totalProfit -= order.quantity() * order.price();
+                } else  if (OrderSide.equals(order.side(), OrderSide.SELL)) {
+                    totalQnt -= order.quantity();
+                    totalProfit += order.quantity() * order.price();
+                }
             }
 
             sb.append("<td style='" + statusStyle + "' align='left'>" + order.status() + "</td>");
@@ -133,10 +158,21 @@ public class TabReportPanel extends JPanel implements ITabRefresh {
             sb.append("</tr>\n");
         }
 
-        if (totalRow) {
+        if (totalVisible) {
+            if (!Utils.isZero(totalQnt)) {
+                QuoteTick lastTick = AppMain.clientSession.symbolTicks().get(symbol);
+                if (lastTick != null) {
+                    // virtual close all positions using last price
+                    totalProfit += totalQnt * lastTick.price();
+                }
+            }
+
             sb.append("<tr style='font-weight:bold'>");
-            sb.append("<td colspan=11 align='right'>Commission total (last 24h):</td>");
-            sb.append("<td align='right'>" + Utils.format(comissionTotal, 2) + "</td>");
+            sb.append("<td colspan=8 align='right'>Total (last 24h):</td>");
+            sb.append("<td align='right'>" + Utils.format(totalProfit, 2) + "</td>");
+            sb.append("<td align='right'>&nbsp;</td>");
+            sb.append("<td align='right'>" + Utils.format(totalQnt, 2) + "</td>");
+            sb.append("<td align='right'>" + Utils.format(totalComission, 2) + "</td>");
             sb.append("</tr>\n");
         }
         sb.append("</table>");

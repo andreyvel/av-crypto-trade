@@ -162,7 +162,7 @@ public class ChartManager {
         }
 
         double lastPrice = lastPrice();
-        List<ChartLineDto> chartLines = AppMain.clientSession.chartLines;
+        List<ChartLineDto> chartLines = AppMain.clientSession.adviceLines();
         if (chartLines != null) {
             for(ChartLineDto item : chartLines) {
                 double value0 = item.calcValue0(lastPrice);
@@ -174,7 +174,7 @@ public class ChartManager {
             }
         }
 
-        List<ChartItemDto> lastAdvice = AppMain.clientSession.chartItems;
+        List<ChartItemDto> lastAdvice = AppMain.clientSession.adviceItems();
         if (lastAdvice != null) {
             for(ChartItemDto item : lastAdvice) {
                 double value = item.calcValue(lastPrice);

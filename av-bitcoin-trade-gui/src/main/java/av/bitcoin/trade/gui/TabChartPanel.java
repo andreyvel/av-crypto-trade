@@ -58,10 +58,11 @@ public class TabChartPanel extends JPanel implements ITabRefresh {
                 } else {
                     AppMain.clientSession.limitOrder(symbol, Enums.OrderSide.SELL, orderQnt, priceY);
                 }
+                return true;
             }
         }
         // allow the event to be redispatched
-        return true;
+        return false;
     }
 
 }

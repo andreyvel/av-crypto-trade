@@ -33,6 +33,6 @@ public class ChartPoint extends IChartEntity {
 
         g.setColor(color);
         int posL = (ChartTheme.barWidthPx() - radius) / 2;
-        g.fillOval(posX, posY, radius * 2, radius * 2);
+        g.fillOval(posX + posL, posY - radius, radius * 2, radius * 2);
     }
 }

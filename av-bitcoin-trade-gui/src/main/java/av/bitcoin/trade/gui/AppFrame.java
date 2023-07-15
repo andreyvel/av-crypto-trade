@@ -65,7 +65,7 @@ public class AppFrame extends JFrame {
             TabChartPanel panel = selectedTabChartPanel();
             if (panel == null) {
                 // allow the event to be redispatched
-                return true;
+                return false;
             }
             return panel.dispatchKeyEvent(e);
         }

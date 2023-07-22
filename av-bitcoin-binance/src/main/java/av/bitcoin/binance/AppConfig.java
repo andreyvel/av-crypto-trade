@@ -18,7 +18,7 @@ public class AppConfig {
     private static final Logger log = LoggerFactory.getLogger(AppConfig.class);
     private static int tradeRestApiPort;
     private static String zmqTradeStreamPub;
-    private static String zmqTradeStreamSub;
+    private static String zmqTradeCommandSub;
     private static String apiKey;
     private static String wsApiUrl;
     private static String wsStreamUrl;
@@ -52,7 +52,7 @@ public class AppConfig {
 
         tradeRestApiPort = getPropertyInt(propertyMap, "trade_rest_api_port", true);
         zmqTradeStreamPub = getPropertyString(propertyMap, "trade_stream_pub", true);
-        zmqTradeStreamSub = getPropertyString(propertyMap, "trade_stream_sub", true);
+        zmqTradeCommandSub = getPropertyString(propertyMap, "trade_command_sub", true);
 
         apiKey = getPropertyString(propertyMap, "api_key", true);
         wsApiUrl = getPropertyString(propertyMap, "ws_api_url", true);
@@ -134,8 +134,8 @@ public class AppConfig {
         return zmqTradeStreamPub;
     }
 
-    public static String zmqTradeStreamSub() {
-        return zmqTradeStreamSub;
+    public static String zmqTradeCommandSub() {
+        return zmqTradeCommandSub;
     }
 
     public static class KlineInfo {

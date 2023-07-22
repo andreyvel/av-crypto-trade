@@ -32,11 +32,14 @@ or
 - Configure av-bitcoin-trade-gui.yaml and run ./av-bitcoin-trade-gui.sh
 
 
-Chart panel:
+Chart panel:<br>
 ![Chart panel](docs/chart.png)
 
-Display of advice points on the chart:
+Display of advice points on the chart:<br>
 ![Chart panel](docs/advice.png)
 
-Report panel:
+Report panel:<br>
 ![Report panel](docs/report.png)
+
+Components and data flow:<br>
+![Chart panel](docs/av-bitcoin-trade.png)

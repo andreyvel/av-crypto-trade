@@ -28,16 +28,16 @@ public class TradeCommandListener {
     }
 
     public void stop() {
-        log.warn("Stop ZMQ trade commands listener: {}", AppConfig.zmqTradeStreamSub());
+        log.warn("Stop ZMQ trade commands listener: {}", AppConfig.zmqTradeCommandSub());
         threadTradeStreamSub.interrupt();
         zmqContext.close();
     }
 
     private void tradeStreamListener() {
         try (ZMQ.Socket subscriber = zmqContext.createSocket(SocketType.SUB)) {
-            log.warn("Starting ZMQ trade commands listener: {}", AppConfig.zmqTradeStreamSub());
+            log.warn("Starting ZMQ trade commands listener: {}", AppConfig.zmqTradeCommandSub());
             subscriber.subscribe(ZMQ.SUBSCRIPTION_ALL);
-            subscriber.connect(AppConfig.zmqTradeStreamSub());
+            subscriber.connect(AppConfig.zmqTradeCommandSub());
 
             while (!Thread.currentThread().isInterrupted()) {
                 try {

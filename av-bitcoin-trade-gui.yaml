@@ -1,9 +1,14 @@
 refresh_chart_ms: 300
 rest_api_service: "http://localhost:8089"
 
-trade_advice_pub: "tcp://localhost:4501"
-trade_stream_pub: "tcp://localhost:4503"
-trade_stream_sub: "tcp://localhost:4504"
+trade_stream_sub: "tcp://localhost:4503"
+trade_command_pub: "tcp://localhost:4504"
+
+# subscribe to av-bitcoin-emulator
+trade_advice_sub: "tcp://localhost:4505"
+
+# subscribe to av-bitcoin-predictor
+#trade_advice_sub: "tcp://localhost:4506"
 
 trade_tabs:
   - caption: "BTCUSDT:1h"

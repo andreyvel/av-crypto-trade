@@ -31,9 +31,9 @@ public class TradeCommandListener {
 
     private void tradeStreamListener() {
         try (ZMQ.Socket subscriber = zmqContext.createSocket(SocketType.SUB)) {
-            log.warn("Starting ZMQ commands listener: {}", AppConfig.zmqTradeStreamSub());
+            log.warn("Starting ZMQ commands listener: {}", AppConfig.zmqTradeCommandSub());
             subscriber.subscribe(ZMQ.SUBSCRIPTION_ALL);
-            subscriber.connect(AppConfig.zmqTradeStreamSub());
+            subscriber.connect(AppConfig.zmqTradeCommandSub());
 
             String method = null;
             String requestId = null;

@@ -50,9 +50,9 @@ public class ClientSession {
     private ZMQ.Socket tradeStreamPublisher = null;
 
     public ClientSession() {
-        log.warn("Starting ZMQ events publisher: {}", AppConfig.tradeStreamSub());
+        log.warn("Starting ZMQ trade command publisher: {}", AppConfig.tradeCommandPub());
         tradeStreamPublisher = zmqContext.createSocket(SocketType.PUB);
-        tradeStreamPublisher.bind(AppConfig.tradeStreamSub());
+        tradeStreamPublisher.bind(AppConfig.tradeCommandPub());
     }
 
     public AccountDto accountStatus() {
@@ -104,24 +104,30 @@ public class ClientSession {
         refreshRestData();
     }
     public void tradeAdviceSubscribe() {
-        log.warn("Starting ZMQ advice subscriber: {}...", AppConfig.tradeAdvicePub());
+        log.warn("Starting ZMQ advice subscriber: {}...", AppConfig.tradeAdviceSub());
         try (ZContext context = new ZContext()) {
             try (ZMQ.Socket subscriber = context.createSocket(SocketType.SUB)) {
                 subscriber.subscribe(ZMQ.SUBSCRIPTION_ALL);
-                subscriber.connect(AppConfig.tradeAdvicePub());
+                subscriber.connect(AppConfig.tradeAdviceSub());
 
+                String jsonStr = null;
                 while (!Thread.currentThread().isInterrupted()) {
                     try {
-                        String jsonStr = subscriber.recvStr();
+                        jsonStr = subscriber.recvStr();
                         JSONObject rootObj = new JSONObject(jsonStr);
+
                         JSONArray jsonArr = rootObj.optJSONArray("chartItems");
-                        adviceItems = ChartItemDto.deserialize(jsonArr);
+                        if (jsonArr != null) {
+                            adviceItems = ChartItemDto.deserialize(jsonArr);
+                        }
 
                         jsonArr = rootObj.optJSONArray("chartLines");
-                        adviceLines = ChartLineDto.deserialize(jsonArr);
+                        if (jsonArr != null) {
+                            adviceLines = ChartLineDto.deserialize(jsonArr);
+                        }
                         adivceItemsLoaded = LocalDateTime.now();
                     } catch (Exception e) {
-                        log.error(null, e);
+                        log.error(jsonStr, e);
                     }
                 }
             }
@@ -216,11 +222,11 @@ public class ClientSession {
     }
 
     public void tradeStreamSubscribe() {
-        log.warn("Starting ZMQ trade stream subscriber: {}...", AppConfig.tradeStreamPub());
+        log.warn("Starting ZMQ trade stream subscriber: {}...", AppConfig.tradeStreamSub());
         try (ZContext context = new ZContext()) {
             try (ZMQ.Socket subscriber = context.createSocket(SocketType.SUB)) {
                 subscriber.subscribe(ZMQ.SUBSCRIPTION_ALL);
-                subscriber.connect(AppConfig.tradeStreamPub());
+                subscriber.connect(AppConfig.tradeStreamSub());
 
                 while (!Thread.currentThread().isInterrupted()) {
                     try {

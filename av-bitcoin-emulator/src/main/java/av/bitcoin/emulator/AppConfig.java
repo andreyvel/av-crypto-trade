@@ -19,7 +19,7 @@ public class AppConfig {
 
     private static String zmqTradeAdvicePub;
     private static String zmqTradeStreamPub;
-    private static String zmqTradeStreamSub;
+    private static String zmqTradeCommandSub;
     private static List<String> subscribeSymbols = new ArrayList<>();
     private static final List<String> subscribeIntervals = new ArrayList<>();
 
@@ -46,7 +46,7 @@ public class AppConfig {
         restApiService = getPropertyString(propertyMap, "rest_api_service", true);
         zmqTradeAdvicePub = getPropertyString(propertyMap, "trade_advice_pub", true);
         zmqTradeStreamPub = getPropertyString(propertyMap, "trade_stream_pub", true);
-        zmqTradeStreamSub = getPropertyString(propertyMap, "trade_stream_sub", true);
+        zmqTradeCommandSub = getPropertyString(propertyMap, "trade_command_sub", true);
 
         String subscribeSymbols2 = getPropertyString(propertyMap, "subscribe_symbols", true);
         subscribeSymbols.addAll(Utils.parseList(subscribeSymbols2));
@@ -82,7 +82,7 @@ public class AppConfig {
         return zmqTradeStreamPub;
     }
 
-    public static String zmqTradeStreamSub() {
-        return zmqTradeStreamSub;
+    public static String zmqTradeCommandSub() {
+        return zmqTradeCommandSub;
     }
 }

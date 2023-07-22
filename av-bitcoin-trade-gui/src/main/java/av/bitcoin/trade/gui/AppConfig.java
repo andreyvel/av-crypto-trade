@@ -17,9 +17,9 @@ public class AppConfig {
     private static final int adviceTimeoutMs = 3_000;
     private static int refreshChartMs = 300;
     private static String restApiService;
-    private static String tradeStreamPub;
     private static String tradeStreamSub;
-    private static String tradeAdvicePub;
+    private static String tradeCommandPub;
+    private static String tradeAdviceSub;
     private static final List<ConfigTradeTab> tradeTabs = new ArrayList<>();
 
     public static void loadValues(String configFileName) throws FileNotFoundException {
@@ -35,9 +35,9 @@ public class AppConfig {
         Map<String, Object> propertyMap = yaml.load(new FileInputStream(configFileName));
         refreshChartMs = getPropertyInt(propertyMap, "refresh_chart_ms", true);
         restApiService = getPropertyString(propertyMap, "rest_api_service", true);
-        tradeAdvicePub = getPropertyString(propertyMap, "trade_advice_pub", true);
-        tradeStreamPub = getPropertyString(propertyMap, "trade_stream_pub", true);
+        tradeAdviceSub = getPropertyString(propertyMap, "trade_advice_sub", true);
         tradeStreamSub = getPropertyString(propertyMap, "trade_stream_sub", true);
+        tradeCommandPub = getPropertyString(propertyMap, "trade_command_pub", true);
 
         ArrayList tradeTabs2 = (ArrayList)propertyMap.get("trade_tabs");
         for(Object propMap : tradeTabs2) {
@@ -80,14 +80,14 @@ public class AppConfig {
         return tradeTabs;
     }
 
-    public static String tradeAdvicePub() {
-        return tradeAdvicePub;
-    }
-    public static String tradeStreamPub() {
-        return tradeStreamPub;
+    public static String tradeAdviceSub() {
+        return tradeAdviceSub;
     }
     public static String tradeStreamSub() {
         return tradeStreamSub;
+    }
+    public static String tradeCommandPub() {
+        return tradeCommandPub;
     }
     public static int refreshChartMs() {
         return refreshChartMs;

@@ -1,7 +1,7 @@
 trade_rest_api_port: 8089
 
 trade_stream_pub: "tcp://localhost:4503"
-trade_stream_sub: "tcp://localhost:4504"
+trade_command_sub: "tcp://localhost:4504"
 
 # ------------------------------------------------------------------------------
 # BTCUSDT, ETHUSDT, USDCUSDT, ADAUSDT, BNBUSDT, XRPUSDT

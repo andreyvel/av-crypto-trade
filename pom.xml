@@ -4,16 +4,16 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>av.bitcoin</groupId>
-    <artifactId>av.bitcoin.trade</artifactId>
-    <version>1.0.0</version>
+    <groupId>av.crypto</groupId>
+    <artifactId>av.crypto.trade</artifactId>
+    <version>1.1.0</version>
     <packaging>pom</packaging>
 
     <modules>
-        <module>av-bitcoin-binance</module>
-        <module>av-bitcoin-common</module>
-        <module>av-bitcoin-emulator</module>
-        <module>av-bitcoin-trade-gui</module>
+        <module>av-crypto-binance</module>
+        <module>av-crypto-common</module>
+        <module>av-crypto-emulator</module>
+        <module>av-crypto-trade-gui</module>
     </modules>
 
     <licenses>

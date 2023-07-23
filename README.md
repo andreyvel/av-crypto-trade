@@ -1,6 +1,6 @@
-# av-bitcoin-trade-gui
+# av-crypto-trade-gui
 
-Linux GUI client for bitcoin trading, supports Binance API
+Linux GUI client for crypto trading, supports Binance API
 
 ## Features
 - Creation of limit orders by clicking on the chart (just drag a red slider and press the spacebar)
@@ -20,26 +20,26 @@ Linux GUI client for bitcoin trading, supports Binance API
 - Run ./mvn-build.sh for creating jar files from sources
 
 ### Start quote proxy server
-- Configure av-bitcoin-emulator.yaml and run ./av-bitcoin-emulator.sh<br>
-  Emulator generates random bitcoin quotes, that are used for local GUI client testing
+- Configure av-crypto-emulator.yaml and run ./av-crypto-emulator.sh<br>
+  Emulator generates random crypto quotes, that are used for local GUI client testing
 
 or 
-- Configure av-bitcoin-binance.yaml and run ./av-bitcoin-binance.sh<br>
+- Configure av-crypto-binance.yaml and run ./av-crypto-binance.sh<br>
   This app uses binance-connector-java for data exchange
 
 ### Start GUI client
 - Check proxy server REST API http://localhost:8089
-- Configure av-bitcoin-trade-gui.yaml and run ./av-bitcoin-trade-gui.sh
+- Configure av-crypto-trade-gui.yaml and run ./av-crypto-trade-gui.sh
 
 
 Chart panel:<br>
 ![Chart panel](docs/chart.png)
 
-Display of advice points on the chart:<br>
+Display of ML advice points on the chart:<br>
 ![Chart panel](docs/advice.png)
 
 Report panel:<br>
 ![Report panel](docs/report.png)
 
 Components and data flow:<br>
-![Chart panel](docs/av-bitcoin-trade.png)
+![Chart panel](docs/av-crypto-trade.png)

@@ -9,6 +9,9 @@
 ## 1.0.1 - 2022-07-01
 - Added random quote emulator
 
+## 1.1.0 - 2022-07-23
+- Project renamed to av-crypto
+
 # Roadmap and Bugfix
 - Restore binance connection after local network restarting
 - Rescale price scale using mouse

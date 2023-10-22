@@ -17,7 +17,7 @@ public class AppMain {
         try {
             AppConfig.loadValues("av-crypto-trade-gui.yaml");
             mainFrame = new AppFrame();
-            setTitle("av-crypto-trade-gui 1.1.0");
+            setTitle("av-crypto-trade-gui 1.2.0");
 
             clientSession = new ClientSession();
             clientSession.startScheduler();

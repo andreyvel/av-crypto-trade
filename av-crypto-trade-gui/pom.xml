@@ -7,11 +7,11 @@
     <parent>
         <groupId>av.crypto</groupId>
         <artifactId>av.crypto.trade</artifactId>
-        <version>1.1.0</version>
+        <version>1.2.0</version>
     </parent>
 
     <artifactId>av-crypto-trade-gui</artifactId>
-    <version>1.1.0</version>
+    <version>1.2.0</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -31,7 +31,7 @@
         <dependency>
             <groupId>av.crypto</groupId>
             <artifactId>av-crypto-common</artifactId>
-            <version>1.1.0</version>
+            <version>1.2.0</version>
         </dependency>
     </dependencies>
 

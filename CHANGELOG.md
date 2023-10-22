@@ -12,6 +12,9 @@
 ## 1.1.0 - 2022-07-23
 - Project renamed to av-crypto
 
+## 1.2.0 - 2022-10-22
+- Updated Binance API version
+
 # Roadmap and Bugfix
 - Restore binance connection after local network restarting
 - Rescale price scale using mouse

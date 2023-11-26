@@ -52,10 +52,11 @@ public class TabChartPanel extends JPanel implements ITabRefresh {
                 String symbol = chartMan.quoteConsumer().symbol();
                 priceY = AppMain.clientSession.roundPrice(priceY, symbol);
 
-                double orderQnt = orderPanel.getBuyQnt();
                 if (priceY < chartMan.lastPrice()) {
+                    double orderQnt = orderPanel.getBuyQnt();
                     AppMain.clientSession.limitOrder(symbol, Enums.OrderSide.BUY, orderQnt, priceY);
                 } else {
+                    double orderQnt = orderPanel.getSellQnt();
                     AppMain.clientSession.limitOrder(symbol, Enums.OrderSide.SELL, orderQnt, priceY);
                 }
                 return true;

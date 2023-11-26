@@ -1,5 +1,6 @@
 package av.crypto.trade.gui;
 
+import av.crypto.common.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -98,7 +99,13 @@ public class AppFrame extends JFrame {
             OrderPanel orderPanel = tabChartPanel.orderPanel();
             double price = orderPanel.getBuyPrice();
             double orderQnt = orderPanel.getBuyQnt();
-            makeOrder(orderPanel.isBuyMarket(), OrderSide.BUY, orderQnt, price);
+
+            String msg = "Create BUY order:\nqnt=" + Utils.num4(orderQnt) + ", price=" + Utils.num2(price) + "?";
+            int res = JOptionPane.showConfirmDialog(this, msg, "Warning", JOptionPane.YES_NO_OPTION);
+
+            if (res == JOptionPane.YES_OPTION) {
+                makeOrder(orderPanel.isBuyMarket(), OrderSide.BUY, orderQnt, price);
+            }
         });
 
         buttonSell.setBounds(buttonBuy.getX() + buttonBuy.getWidth(), 0, buttonWidth, buttonHeight);
@@ -112,7 +119,13 @@ public class AppFrame extends JFrame {
             OrderPanel orderPanel = tabChartPanel.orderPanel();
             double price = orderPanel.getSellPrice();
             double orderQnt = orderPanel.getSellQnt();
-            makeOrder(orderPanel.isSellMarket(), OrderSide.SELL, orderQnt, price);
+
+            String msg = "Create SELL order:\nqnt=" + Utils.num4(orderQnt) + ", price=" + Utils.num2(price) + "?";
+            int res = JOptionPane.showConfirmDialog(this, msg, "Warning", JOptionPane.YES_NO_OPTION);
+
+            if (res == JOptionPane.YES_OPTION) {
+                makeOrder(orderPanel.isSellMarket(), OrderSide.SELL, orderQnt, price);
+            }
         });
 
         buttonCloseAll.setBounds(buttonSell.getX() + buttonSell.getWidth(), 0, buttonWidth, buttonHeight);
@@ -122,7 +135,12 @@ public class AppFrame extends JFrame {
                 showMessageChartPanelIsNotActive();
                 return;
             }
-            AppMain.clientSession.cancelAllOrders(tabChartPanel.chartPanel().chartMan().symbol());
+
+            String msg = "Cancel ALL orders?";
+            int res = JOptionPane.showConfirmDialog(this, msg, "Warning", JOptionPane.YES_NO_OPTION);
+            if (res == JOptionPane.YES_OPTION) {
+                AppMain.clientSession.cancelAllOrders(tabChartPanel.chartPanel().chartMan().symbol());
+            }
         });
 
         buttonRefresh.setBounds(buttonCloseAll.getX() + buttonCloseAll.getWidth(), 0, buttonWidth, buttonHeight);

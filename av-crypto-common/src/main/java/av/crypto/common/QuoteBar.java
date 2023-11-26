@@ -22,6 +22,11 @@ public class QuoteBar {
                 ", vol=" + Utils.num2(vol);
     }
 
+    public QuoteBar(QuoteBar bar) {
+        this.date = bar.date;
+        init(bar.open, bar.high, bar.low, bar.close, bar.vol);
+    }
+
     public QuoteBar(LocalDateTime dateTime, double price) {
         this.date = dateTime;
         init(price, price, price, price, 0);
